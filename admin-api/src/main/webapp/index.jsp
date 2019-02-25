@@ -12,19 +12,21 @@
             <input type="submit" value="submit">
         </form>
         <% String city;
+            String result;
             try {
                 InitialContext initialContext = new InitialContext();
                 Service service = (Service) initialContext.lookup("java:global/admin-api/AdminApiService");
                 city = request.getParameter("city");
 
                 if (!"".equals(city)) {
-                    service.serve(city);
-                    city = "success";
+                    result = service.serve(city);
+                } else {
+                    result = "enter city";
                 }
             } catch (NamingException e) {
-                city = "Error: " + e.getMessage();
+                result = "Error: " + e.getMessage();
             }
         %>
-        <%= city %>
+        <%= result %>
     </body>
 </html>

@@ -8,11 +8,15 @@ import javax.inject.Inject;
 @Stateless
 public class AdminApiService implements Service {
 
-    @Inject
-    private JmsSender jmsSender;
+    private final JmsSender jmsSender;
 
-    public void serve(final String text) {
-        jmsSender.createJmsMessage(text);
+    @Inject
+    public AdminApiService(final JmsSender jmsSender) {
+        this.jmsSender = jmsSender;
+    }
+
+    public String serve(final String text) {
+        return jmsSender.createJmsMessage(text);
     }
 
 }

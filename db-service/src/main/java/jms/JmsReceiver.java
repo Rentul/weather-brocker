@@ -40,7 +40,7 @@ public class JmsReceiver implements MessageListener {
         final WeatherBroadcast weatherBroadcast;
         try {
             if (message instanceof ObjectMessage) {
-                weatherBroadcast = message.getBody(WeatherBroadcast.class);
+                weatherBroadcast = message.getBody(WeatherBroadcast.class);//
                 weatherService.addWeatherBroadcast(weatherBroadcast);
             }
         } catch (JMSException e) {

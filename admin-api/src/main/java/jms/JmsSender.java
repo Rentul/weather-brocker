@@ -21,8 +21,9 @@ public class JmsSender {
 
         if (!"".equals(text)) {
             jmsContext.createProducer().send(queue, text);
+            return "success";
+        } else {
+            return "enter city";
         }
-
-        return text;
     }
 }
