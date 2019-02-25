@@ -19,10 +19,6 @@ public class WeatherBroadcastServiceImpl implements WeatherBroadcastService {
 
         model.weather.WeatherBroadcast weatherBroadcast = mapperFacade.map(broadcastView, model.weather.WeatherBroadcast.class);
 
-        if(weatherBroadcast == null) {
-            weatherBroadcast = new model.weather.WeatherBroadcast();
-        }
-
         dao.add(weatherBroadcast);
 
         return weatherBroadcast;

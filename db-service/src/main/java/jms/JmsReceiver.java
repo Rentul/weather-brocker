@@ -44,7 +44,7 @@ public class JmsReceiver implements MessageListener {
                 weatherService.addWeatherBroadcast(weatherBroadcast);
             }
         } catch (JMSException e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new RuntimeException("Error in JmsReceiver: " + e);
         }
     }
 }

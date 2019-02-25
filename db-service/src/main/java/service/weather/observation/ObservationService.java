@@ -8,5 +8,5 @@ public interface ObservationService {
 
     Observation add(CurrentObservation observationView, WeatherBroadcast weatherBroadcast);
 
-    Observation getById(Long id);
+    CurrentObservation getById(Long id);
 }
