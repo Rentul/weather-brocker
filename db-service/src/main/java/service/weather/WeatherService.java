@@ -1,10 +1,10 @@
-package service;
+package service.weather;
 
 import view.weather.WeatherBroadcast;
 
 public interface WeatherService {
 
-    String addWeatherBroadcast(WeatherBroadcast weatherBroadcast);
+    void addWeatherBroadcast(WeatherBroadcast weatherBroadcast);
 
     WeatherBroadcast getWeatherBroadcast(String city) throws Exception;
 }

@@ -38,9 +38,8 @@ public class WeatherBroadcast {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(final Location location) {
         this.location = location;
-        //location.addWeatherBroadcast(this);
     }
 
     public List<Forecast> getForecasts() {
@@ -50,19 +49,19 @@ public class WeatherBroadcast {
         return forecasts;
     }
 
-    public void setForecasts(List<Forecast> forecasts) {
+    public void setForecasts(final List<Forecast> forecasts) {
         this.forecasts = forecasts;
         for(Forecast forecast: getForecasts()) {
             forecast.setWeatherBroadcast(this);
         }
     }
 
-    public void addForecast(Forecast forecast) {
+    public void addForecast(final Forecast forecast) {
         getForecasts().add(forecast);
         forecast.setWeatherBroadcast(this);
     }
 
-    public void removeForecast(Forecast forecast) {
+    public void removeForecast(final Forecast forecast) {
         getForecasts().remove(forecast);
     }
 

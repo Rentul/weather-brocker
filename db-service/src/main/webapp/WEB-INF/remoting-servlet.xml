@@ -9,13 +9,13 @@
 
 <context:component-scan base-package="ru.weatherbrocker.dbservice"/>
 
-    <bean id="weatherService" class="service.WeatherServiceImpl">
+    <bean id="weatherService" class="service.weather.WeatherServiceImpl">
         <!-- any additional properties, maybe a DAO? -->
     </bean>
 
     <bean name="/WeatherService" class="org.springframework.remoting.caucho.HessianServiceExporter">
         <property name="service" ref="weatherService"/>
-        <property name="serviceInterface" value="service.WeatherService"/>
+        <property name="serviceInterface" value="service.weather.WeatherService"/>
     </bean>
 
 </beans>

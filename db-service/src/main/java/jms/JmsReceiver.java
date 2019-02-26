@@ -1,6 +1,6 @@
 package jms;
 
-import service.WeatherService;
+import service.weather.WeatherService;
 import view.weather.WeatherBroadcast;
 
 import javax.annotation.Resource;

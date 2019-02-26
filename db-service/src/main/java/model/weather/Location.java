@@ -116,7 +116,6 @@ public class Location {
 
     public void addWeatherBroadcast(final WeatherBroadcast weatherBroadcast) {
         getWeatherBroadcasts().add(weatherBroadcast);
-        //
         weatherBroadcast.setLocation(this);
     }
 
