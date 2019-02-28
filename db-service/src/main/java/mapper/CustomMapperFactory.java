@@ -2,14 +2,18 @@ package mapper;
 
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.stereotype.Service;
 import view.weather.*;
 
-import javax.enterprise.inject.Produces;
+//import javax.enterprise.inject.Produces;
 
-public class CustomMapperFactory {
+@Service
+public class CustomMapperFactory implements FactoryBean<MapperFactory> {
 
-    @Produces
-    public MapperFactory createClient() {
+    //@Produces
+    @Override
+    public MapperFactory getObject() {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder()
                 .constructorResolverStrategy(null)
                 .build();
@@ -76,5 +80,15 @@ public class CustomMapperFactory {
                 .register();
 
         return mapperFactory;
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return MapperFactory.class;
+    }
+
+    @Override
+    public boolean isSingleton() {
+        return true;
     }
 }

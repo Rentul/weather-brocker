@@ -1,38 +1,22 @@
 package jms;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import service.weather.WeatherService;
 import view.weather.WeatherBroadcast;
 
-import javax.annotation.Resource;
-import javax.ejb.ActivationConfigProperty;
-import javax.ejb.MessageDriven;
-import javax.ejb.MessageDrivenContext;
-import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 
-@MessageDriven(
-        mappedName="java:jboss/exported/jms/queue/test2",
-        activationConfig = {
-                @ActivationConfigProperty(
-                        propertyName = "acknowledgeMode",
-                        propertyValue = "auto-acknowledge"),
-                @ActivationConfigProperty(
-                        propertyName = "destinationType",
-                        propertyValue = "javax.jms.Queue"),
-                @ActivationConfigProperty(
-                        propertyName = "destination",
-                        propertyValue = "java:jboss/exported/jms/queue/test2"),
-        })
 public class JmsReceiver implements MessageListener {
 
-    @Resource
-    private MessageDrivenContext messageDrivenContext;
+    final private WeatherService weatherService;
 
-    @Inject
-    private WeatherService weatherService;
+    @Autowired
+    public JmsReceiver(final WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 
     @Override
     public void onMessage(final Message message) {
@@ -40,8 +24,10 @@ public class JmsReceiver implements MessageListener {
         final WeatherBroadcast weatherBroadcast;
         try {
             if (message instanceof ObjectMessage) {
-                weatherBroadcast = message.getBody(WeatherBroadcast.class);//
+                weatherBroadcast = message.getBody(WeatherBroadcast.class);
                 weatherService.addWeatherBroadcast(weatherBroadcast);
+            } else {
+                throw new RuntimeException("Error in JmsReceiver: the message is not an instance of an Object message");
             }
         } catch (JMSException e) {
             throw new RuntimeException("Error in JmsReceiver: " + e);

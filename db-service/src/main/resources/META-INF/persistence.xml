@@ -1,13 +1,25 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-    <persistence-unit name="sample">
+    <persistence-unit name="sample" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:jboss/datasources/PostgreDataSource</jta-data-source>
+        <class>model.weather.Location</class>
+        <class>model.weather.WeatherBroadcast</class>
+        <class>model.weather.Observation</class>
+        <class>model.weather.Condition</class>
+        <class>model.weather.Atmosphere</class>
+        <class>model.weather.Astronomy</class>
+        <class>model.weather.Wind</class>
+        <class>model.weather.Forecast</class>
         <properties>
             <property name="hibernate.default_schema" value="weather"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform"/>
         </properties>
     </persistence-unit>
+
 </persistence>

@@ -1,6 +1,7 @@
 package dao.weather;
 
 import model.weather.*;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Repository
 public class WeatherDaoImpl implements WeatherDao {
 
     @PersistenceContext(unitName = "sample")

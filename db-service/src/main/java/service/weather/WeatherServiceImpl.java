@@ -3,17 +3,19 @@ package service.weather;
 import dao.weather.WeatherDao;
 import mapper.MapperFacade;
 import model.weather.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import view.weather.CurrentObservation;
 
-import javax.inject.Inject;
 import java.util.List;
 
+@Service
 public class WeatherServiceImpl implements WeatherService {
 
-    @Inject
+    @Autowired
     private WeatherDao dao;
 
-    @Inject
+    @Autowired
     private MapperFacade mapperFacade;
 
     @Override
@@ -50,7 +52,6 @@ public class WeatherServiceImpl implements WeatherService {
         final Wind wind = mapperFacade.map(
                 weatherBroadcastView.getCurrentObservation().getWind(),
                 Wind.class);
-
 
         final Location locationFromDb = dao.getLocationById(location.getWoeid());
 
