@@ -4,14 +4,17 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Service;
-import view.weather.*;
-
-//import javax.enterprise.inject.Produces;
+import view.weather.Astronomy;
+import view.weather.CurrentObservation;
+import view.weather.Location;
+import view.weather.WeatherBroadcast;
+import view.weather.Atmosphere;
+import view.weather.Condition;
+import view.weather.Forecast;
 
 @Service
 public class CustomMapperFactory implements FactoryBean<MapperFactory> {
 
-    //@Produces
     @Override
     public MapperFactory getObject() {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder()

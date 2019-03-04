@@ -2,11 +2,19 @@ package service.weather;
 
 import dao.weather.WeatherDao;
 import mapper.MapperFacade;
-import model.weather.*;
+import model.weather.Astronomy;
+import model.weather.Atmosphere;
+import model.weather.Condition;
+import model.weather.WeatherBroadcast;
+import model.weather.Forecast;
+import model.weather.Location;
+import model.weather.Observation;
+import model.weather.Wind;
+import view.weather.CurrentObservation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import view.weather.CurrentObservation;
 
 import java.util.List;
 

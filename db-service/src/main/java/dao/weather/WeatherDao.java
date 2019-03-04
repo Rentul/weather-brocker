@@ -1,6 +1,13 @@
 package dao.weather;
 
-import model.weather.*;
+import model.weather.Astronomy;
+import model.weather.Atmosphere;
+import model.weather.Condition;
+import model.weather.WeatherBroadcast;
+import model.weather.Forecast;
+import model.weather.Location;
+import model.weather.Observation;
+import model.weather.Wind;
 
 import java.util.List;
 
