@@ -5,6 +5,7 @@ import mapper.MapperFacade;
 import model.weather.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import view.weather.CurrentObservation;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class WeatherServiceImpl implements WeatherService {
     private MapperFacade mapperFacade;
 
     @Override
+    @Transactional
     public void addWeatherBroadcast(final view.weather.WeatherBroadcast weatherBroadcastView) {
 
         final WeatherBroadcast weatherBroadcast = mapperFacade.map(
@@ -91,6 +93,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
+    @Transactional
     public view.weather.WeatherBroadcast getWeatherBroadcast(final String city) throws Exception {
 
         final Location location = dao.getLocationByCity(city);

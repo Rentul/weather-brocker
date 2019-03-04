@@ -92,12 +92,12 @@ public class YahooRequester {
 
     private String encodeCityName(final String cityName) {
 
-        String encodedCityName = "";
+        String encodedCityName;
 
         try {
             encodedCityName = URLEncoder.encode(cityName, UTF8_ENCODING);
         } catch (UnsupportedEncodingException e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new RuntimeException("Error while encoding city name: " + e.getMessage());
         }
 
         return encodedCityName;
@@ -110,7 +110,6 @@ public class YahooRequester {
         final StringBuilder parametersList = new StringBuilder();
 
         for (int i = 0; i < parameters.size(); i++) {
-            //parametersList.append(((i > 0) ? "&" : "") + parameters.get(i));
             if (i > 0) {
                 parametersList.append("&");
             }
@@ -129,13 +128,12 @@ public class YahooRequester {
 
             byte[] rawHMAC = mac.doFinal(signatureString.getBytes());
 
-            Base64.Encoder encoder = Base64.getEncoder();
+            final Base64.Encoder encoder = Base64.getEncoder();
 
             signature = encoder.encodeToString(rawHMAC);
 
         } catch (Exception e) {
-            System.err.println("Unable to append signature");
-            System.exit(0);
+            throw new RuntimeException("Unable to append signature: " + e.getMessage());
         }
 
         return signature;

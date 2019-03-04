@@ -15,7 +15,7 @@ public class JacksonMapper {
         try {
             weatherBroadcast = mapper.readValue(json, WeatherBroadcast.class);
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new RuntimeException("Error in JacksonMapper: " + e.getMessage());
         }
         return weatherBroadcast;
     }

@@ -4,12 +4,10 @@
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/beans">
 
-    <bean id="weatherService" class="service.weather.WeatherServiceImpl">
-        <!-- any additional properties, maybe a DAO? -->
-    </bean>
+
 
     <bean name="/WeatherService" class="org.springframework.remoting.caucho.HessianServiceExporter">
-        <property name="service" ref="weatherService"/>
+        <property name="service" ref="weatherServiceImpl"/>
         <property name="serviceInterface" value="service.weather.WeatherService"/>
     </bean>
 
