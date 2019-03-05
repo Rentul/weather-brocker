@@ -14,7 +14,6 @@ public class MapperFacadeImpl implements MapperFacade {
 
     private final MapperFactory mapperFactory;
 
-    //@Inject
     @Autowired
     public MapperFacadeImpl(MapperFactory mapperFactory) {
         this.mapperFactory = mapperFactory;

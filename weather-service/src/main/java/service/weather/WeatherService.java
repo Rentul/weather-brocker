@@ -6,5 +6,5 @@ public interface WeatherService {
 
     void addWeatherBroadcast(WeatherBroadcast weatherBroadcast);
 
-    WeatherBroadcast getWeatherBroadcast(String city) throws Exception;
+    WeatherBroadcast getWeatherBroadcast(String city);
 }

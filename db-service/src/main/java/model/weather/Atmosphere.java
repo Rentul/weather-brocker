@@ -21,11 +21,6 @@ public class Atmosphere {
     @Version
     private Integer version;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @MapsId
-    private Observation observation;
-
     @Column(name = "humidity")
     private Integer humidity;
 
@@ -37,6 +32,11 @@ public class Atmosphere {
 
     @Column(name = "rising")
     private Integer rising;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    @MapsId
+    private Observation observation;
 
     public Long getId() {
         return id;

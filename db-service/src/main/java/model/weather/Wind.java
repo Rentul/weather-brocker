@@ -22,11 +22,6 @@ public class Wind {
     @Version
     private Integer version;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @MapsId
-    private Observation observation;
-
     @Column(name = "chill")
     private Integer chill;
 
@@ -35,6 +30,11 @@ public class Wind {
 
     @Column(name = "speed")
     private Float speed;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    @MapsId
+    private Observation observation;
 
     public Long getId() {
         return id;

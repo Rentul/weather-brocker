@@ -23,13 +23,13 @@ public class Observation {
     @Version
     private Integer version;
 
+    @Column(name = "pub_date")
+    private Timestamp pubDate;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
     private WeatherBroadcast weatherBroadcast;
-
-    @Column(name = "pub_date")
-    private Timestamp pubDate;
 
     public Long id() {
         return id;

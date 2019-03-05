@@ -21,11 +21,6 @@ public class Condition {
     @Version
     private Integer version;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @MapsId
-    private Observation observation;
-
     @Column(name = "text", length = 50, nullable = false)
     private String text;
 
@@ -34,6 +29,11 @@ public class Condition {
 
     @Column(name = "temperature")
     private Integer temperature;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    @MapsId
+    private Observation observation;
 
     public Long getId() {
         return id;

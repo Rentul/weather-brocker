@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import view.weather.WeatherBroadcast;
 
 import javax.ejb.Stateless;
+import java.io.IOException;
 
 @Stateless
 public class JacksonMapper {
@@ -14,8 +15,8 @@ public class JacksonMapper {
         WeatherBroadcast weatherBroadcast = new WeatherBroadcast();
         try {
             weatherBroadcast = mapper.readValue(json, WeatherBroadcast.class);
-        } catch (Exception e) {
-            throw new RuntimeException("Error in JacksonMapper: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException("Error in JacksonMapper while mapping Json to WeatherBroadcast", e);
         }
         return weatherBroadcast;
     }

@@ -29,21 +29,16 @@ public class WeatherController {
         return weatherService;
     }
 
-
     public void setWeatherService(WeatherService weatherService) {
         if (weatherService == null) {
-            throw new RuntimeException("WeatherService is null");
+            throw new RuntimeException("Error in WeatherController while setting weatherService: WeatherService is null");
         }
         this.weatherService = weatherService;
     }
 
     @RequestMapping(value = "/{city:[\\w]+}", method = {GET})
     public WeatherBroadcast getWeatherBroadcastByCity(final @PathVariable("city") String city) {
-        try {
-            return weatherService.getWeatherBroadcast(city);
-        } catch (Exception e) {
-            throw new RuntimeException("Error in weather controller: " + e.getMessage());
-        }
+        return weatherService.getWeatherBroadcast(city);
     }
 
 }

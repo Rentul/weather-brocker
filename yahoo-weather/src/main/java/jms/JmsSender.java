@@ -25,6 +25,8 @@ public class JmsSender {
 
         if (weatherBroadcast != null) {
             jmsContext.createProducer().send(queue, weatherBroadcast);
+        } else {
+            throw new RuntimeException("Error in JmsSender while sending Jms Message: weatherBroadcast is null");
         }
     }
 }

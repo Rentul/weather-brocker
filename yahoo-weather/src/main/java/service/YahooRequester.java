@@ -13,6 +13,8 @@ import javax.ejb.Stateless;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -106,7 +108,7 @@ public class YahooRequester {
         try {
             encodedCityName = URLEncoder.encode(cityName, UTF8_ENCODING);
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("Error while encoding city name: " + e.getMessage());
+            throw new RuntimeException("Error in YahooRequester while encoding city name", e);
         }
 
         return encodedCityName;
@@ -114,7 +116,7 @@ public class YahooRequester {
 
     private String makeSignature(final List<String> parameters) {
 
-        String signature = "";
+        String signature;
 
         final StringBuilder parametersList = new StringBuilder();
 
@@ -141,8 +143,8 @@ public class YahooRequester {
 
             signature = encoder.encodeToString(rawHMAC);
 
-        } catch (Exception e) {
-            throw new RuntimeException("Unable to append signature: " + e.getMessage());
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException | InvalidKeyException e) {
+            throw new RuntimeException("Error in YahooRequester, unable to append signature", e);
         }
 
         return signature;

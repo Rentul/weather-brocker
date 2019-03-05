@@ -41,7 +41,7 @@ public class JmsReceiver implements MessageListener {
                 service.serve(text);
             }
         } catch (JMSException e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new RuntimeException("Error in JmsReceiver while receiving Jms Message", e);
         }
     }
 }

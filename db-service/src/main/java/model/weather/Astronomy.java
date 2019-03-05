@@ -21,16 +21,16 @@ public class Astronomy {
     @Version
     private Integer version;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @MapsId
-    private Observation observation;
-
     @Column(name = "sunrise", length = 15, nullable = false)
     private String sunrise;
 
     @Column(name = "sunset", length = 15, nullable = false)
     private String sunset;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    @MapsId
+    private Observation observation;
 
     public Long getId() {
         return id;

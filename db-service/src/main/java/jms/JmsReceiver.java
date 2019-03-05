@@ -27,10 +27,10 @@ public class JmsReceiver implements MessageListener {
                 weatherBroadcast = message.getBody(WeatherBroadcast.class);
                 weatherService.addWeatherBroadcast(weatherBroadcast);
             } else {
-                throw new RuntimeException("Error in JmsReceiver: the message is not an instance of an Object message");
+                throw new RuntimeException("Error in JmsReceiver while receiving Jms Message: the message is not an instance of an Object message");
             }
         } catch (JMSException e) {
-            throw new RuntimeException("Error in JmsReceiver: " + e);
+            throw new RuntimeException("Error in JmsReceiver while receiving Jms Message", e);
         }
     }
 }

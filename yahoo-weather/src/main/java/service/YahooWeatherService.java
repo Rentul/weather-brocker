@@ -29,5 +29,4 @@ public class YahooWeatherService implements Service {
 
     }
 
-
 }

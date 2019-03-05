@@ -102,7 +102,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     @Transactional
-    public view.weather.WeatherBroadcast getWeatherBroadcast(final String city) throws Exception {
+    public view.weather.WeatherBroadcast getWeatherBroadcast(final String city) {
 
         final Location location = dao.getLocationByCity(city);
         final WeatherBroadcast weatherBroadcast = location.getLatestWeatherBroadcast();

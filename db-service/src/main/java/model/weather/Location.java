@@ -17,7 +17,7 @@ public class Location {
 
     @Id
     @Column(name = "woeid")
-    private Long woeid;             //id
+    private Long woeid;
 
     @Version
     private Integer version;
@@ -130,12 +130,12 @@ public class Location {
         getWeatherBroadcasts().remove(weatherBroadcast);
     }
 
-    public WeatherBroadcast getLatestWeatherBroadcast() throws Exception {
+    public WeatherBroadcast getLatestWeatherBroadcast() {
 
         int weatherBroadcastListSize = getWeatherBroadcasts().size();
 
         if(weatherBroadcastListSize == 0) {
-            throw new Exception("There are no broadcasts for " + getCity());
+            throw new RuntimeException("Error in Location while getting weather broadcast: there are no broadcasts for " + getCity());
         }
 
         return getWeatherBroadcasts().get(weatherBroadcastListSize - 1);
