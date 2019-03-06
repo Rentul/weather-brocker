@@ -152,7 +152,7 @@ public class YahooRequester {
 
     private String buildAuthorizationLine(final String oauthNonce, long timestamp, final String signature) {
 
-        StringBuilder authorizationLineBuilder = new StringBuilder();
+        final StringBuilder authorizationLineBuilder = new StringBuilder();
 
         authorizationLineBuilder.append("OAuth ")
                 .append(OAUTH_CONSUMER_KEY).append("\"").append(CONSUMER_KEY).append("\", ")

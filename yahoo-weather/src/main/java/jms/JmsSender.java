@@ -21,13 +21,21 @@ public class JmsSender {
 
     private static final String QUEUE_NAME = "java:jboss/exported/jms/queue/test2";
 
+    private JMSContext jmsContext;
+
+    private Queue queue;
+
     @Inject
     @JMSConnectionFactory(JMS_CONNECTION_FACTORY)
     @JMSPasswordCredential(userName = JMS_USER_NAME, password = JMS_PASSWORD)
-    private JMSContext jmsContext;
+    public void setJmsContext(final JMSContext jmsContext) {
+        this.jmsContext = jmsContext;
+    }
 
     @Resource(name = QUEUE_NAME)
-    private Queue queue;
+    public void setQueue(final Queue queue) {
+        this.queue = queue;
+    }
 
     public void createJmsMessage(final WeatherBroadcast weatherBroadcast) {
 

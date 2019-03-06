@@ -11,7 +11,7 @@
     <mvc:annotation-driven/>
 
     <bean class="controller.weather.WeatherController">
-        <property name="weatherService" ref="weatherService"/>
+        <constructor-arg index="0" ref="weatherService"/>
     </bean>
 
     <bean id="weatherService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">

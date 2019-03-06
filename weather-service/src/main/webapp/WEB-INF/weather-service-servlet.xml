@@ -5,13 +5,4 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        ">
 
-    <bean class="controller.weather.WeatherController">
-        <property name="weatherService" ref="weatherService"/>
-    </bean>
-
-    <bean id="weatherService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="http://127.0.0.1:8080/db-service/remoting/WeatherService"/>
-        <property name="serviceInterface" value="service.weather.WeatherService"/>
-    </bean>
-
 </beans>

@@ -14,25 +14,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping(value = "/", produces = APPLICATION_JSON_VALUE)
 public class WeatherController {
 
+    private final WeatherService weatherService;
+
     @Autowired
-    private WeatherService weatherService;
-
-    public WeatherController() {
-        weatherService = null;
-    }
-
     public WeatherController(final WeatherService weatherService) {
-        this.weatherService = weatherService;
-    }
-
-    public WeatherService getWeatherService() {
-        return weatherService;
-    }
-
-    public void setWeatherService(WeatherService weatherService) {
-        if (weatherService == null) {
-            throw new RuntimeException("Error in WeatherController while setting weatherService: WeatherService is null");
-        }
         this.weatherService = weatherService;
     }
 

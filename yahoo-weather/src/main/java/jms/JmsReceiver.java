@@ -27,11 +27,19 @@ import javax.jms.TextMessage;
 })
 public class JmsReceiver implements MessageListener {
 
-    @Resource
     private MessageDrivenContext messageDrivenContext;
 
-    @Inject
     private Service service;
+
+    @Resource
+    public void setMessageDrivenContext(final MessageDrivenContext messageDrivenContext) {
+        this.messageDrivenContext = messageDrivenContext;
+    }
+
+    @Inject
+    public void setService(final Service service) {
+        this.service = service;
+    }
 
     @Override
     public void onMessage(final Message message) {

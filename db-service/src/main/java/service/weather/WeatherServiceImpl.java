@@ -21,11 +21,15 @@ import java.util.List;
 @Service
 public class WeatherServiceImpl implements WeatherService {
 
-    @Autowired
-    private WeatherDao dao;
+    private final WeatherDao dao;
+
+    private final MapperFacade mapperFacade;
 
     @Autowired
-    private MapperFacade mapperFacade;
+    public WeatherServiceImpl(final WeatherDao dao, final MapperFacade mapperFacade) {
+        this.dao = dao;
+        this.mapperFacade = mapperFacade;
+    }
 
     @Override
     @Transactional
