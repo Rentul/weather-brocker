@@ -4,20 +4,28 @@ import jms.JmsSender;
 import mapper.JacksonMapper;
 import view.weather.WeatherBroadcast;
 
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 @Stateless
 public class YahooWeatherService implements Service {
 
-    @Resource(lookup = "java:global/yahoo-weather/JmsSender")
-    private JmsSender jmsSender;
+    private final JmsSender jmsSender;
 
-    @Resource(lookup = "java:global/yahoo-weather/YahooRequester")
-    private YahooRequester yahooRequester;
+    private final YahooRequester yahooRequester;
 
-    @Resource(lookup = "java:global/yahoo-weather/JacksonMapper")
-    private JacksonMapper jacksonMapper;
+    private final JacksonMapper jacksonMapper;
+
+    @Inject
+    public YahooWeatherService(
+            final JmsSender jmsSender,
+            final YahooRequester yahooRequester,
+            final JacksonMapper jacksonMapper) {
+
+        this.jmsSender = jmsSender;
+        this.yahooRequester = yahooRequester;
+        this.jacksonMapper = jacksonMapper;
+    }
 
     public void serve (final String cityName) {
 

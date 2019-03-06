@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.ejb.MessageDrivenContext;
+import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -22,14 +23,14 @@ import javax.jms.TextMessage;
                     propertyValue = "javax.jms.Queue"),
             @ActivationConfigProperty(
                     propertyName = "destination",
-                    propertyValue = "java:jboss/exported/jms/queue/test"),
+                    propertyValue = "java:jboss/exported/jms/queue/test")
 })
 public class JmsReceiver implements MessageListener {
 
     @Resource
     private MessageDrivenContext messageDrivenContext;
 
-    @Resource(lookup = "java:global/yahoo-weather/YahooWeatherService")
+    @Inject
     private Service service;
 
     @Override

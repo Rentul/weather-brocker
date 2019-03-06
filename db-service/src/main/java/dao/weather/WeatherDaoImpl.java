@@ -22,7 +22,9 @@ import java.util.List;
 @Repository
 public class WeatherDaoImpl implements WeatherDao {
 
-    @PersistenceContext(unitName = "sample")
+    private final String PERSISTENCE_UNIT_NAME = "sample";
+
+    @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
 
     @Override
