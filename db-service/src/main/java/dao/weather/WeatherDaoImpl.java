@@ -25,7 +25,7 @@ import java.util.List;
 @Repository
 public class WeatherDaoImpl implements WeatherDao {
 
-    private final String PERSISTENCE_UNIT_NAME = "sample";
+    private final String PERSISTENCE_UNIT_NAME = "weather";
 
     private EntityManager entityManager;
 
@@ -44,7 +44,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * @param entityManager экземпляр класса EntityManager
      */
     @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
-    public void setEntityManager(EntityManager entityManager) {
+    public void setEntityManager(final EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -52,7 +52,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addAstronomy(Astronomy astronomy) {
+    public void addAstronomy(final Astronomy astronomy) {
         entityManager.persist(astronomy);
     }
 
@@ -60,7 +60,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addAtmosphere(Atmosphere atmosphere) {
+    public void addAtmosphere(final Atmosphere atmosphere) {
         entityManager.persist(atmosphere);
     }
 
@@ -68,7 +68,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addBroadcast(WeatherBroadcast weatherBroadcast) {
+    public void addBroadcast(final WeatherBroadcast weatherBroadcast) {
         entityManager.persist(weatherBroadcast);
     }
 
@@ -76,7 +76,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addCondition(Condition condition) {
+    public void addCondition(final Condition condition) {
         entityManager.persist(condition);
     }
 
@@ -84,7 +84,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addForecastList(List<Forecast> forecasts) {
+    public void addForecastList(final List<Forecast> forecasts) {
         for (Forecast forecast : forecasts) {
             entityManager.persist(forecast);
         }
@@ -94,7 +94,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addLocation(Location location) {
+    public void addLocation(final Location location) {
         entityManager.persist(location);
     }
 
@@ -102,7 +102,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addObservation(Observation observation) {
+    public void addObservation(final Observation observation) {
         entityManager.persist(observation);
     }
 
@@ -110,7 +110,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public void addWind(Wind wind) {
+    public void addWind(final Wind wind) {
         entityManager.persist(wind);
     }
 
@@ -118,7 +118,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Astronomy getAstronomyById(Long id) {
+    public Astronomy getAstronomyById(final Long id) {
         return entityManager.find(Astronomy.class, id);
     }
 
@@ -126,7 +126,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Atmosphere getAtmosphereById(Long id) {
+    public Atmosphere getAtmosphereById(final Long id) {
         return entityManager.find(Atmosphere.class, id);
     }
 
@@ -134,7 +134,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Condition getConditionById(Long id) {
+    public Condition getConditionById(final Long id) {
         return entityManager.find(Condition.class, id);
     }
 
@@ -142,7 +142,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Location getLocationByCity(String city) {
+    public Location getLocationByCity(final String city) {
         final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Location> criteriaQuery = criteriaBuilder.createQuery(Location.class);
         final Root<Location> locationRoot = criteriaQuery.from(Location.class);
@@ -158,7 +158,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Location getLocationById(Long id) {
+    public Location getLocationById(final Long id) {
         return entityManager.find(Location.class, id);
     }
 
@@ -166,7 +166,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Observation getObservationById(Long id) {
+    public Observation getObservationById(final Long id) {
         return entityManager.find(Observation.class, id);
     }
 
@@ -174,7 +174,7 @@ public class WeatherDaoImpl implements WeatherDao {
      * {@inheritDoc}
      */
     @Override
-    public Wind getWindById(Long id) {
+    public Wind getWindById(final Long id) {
         return entityManager.find(Wind.class, id);
     }
 }

@@ -34,9 +34,9 @@ public class JmsReceiver implements MessageListener {
     @Override
     public void onMessage(final Message message) {
 
-        final WeatherBroadcast weatherBroadcast;
         try {
             if (message instanceof ObjectMessage) {
+                final WeatherBroadcast weatherBroadcast;
                 weatherBroadcast = message.getBody(WeatherBroadcast.class);
                 weatherService.addWeatherBroadcast(weatherBroadcast);
             } else {

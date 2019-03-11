@@ -36,7 +36,7 @@ public class JmsSender {
     @Inject
     @JMSConnectionFactory(JMS_CONNECTION_FACTORY)
     @JMSPasswordCredential(userName = JMS_USER_NAME, password = JMS_PASSWORD)
-    public void setJmsContext(JMSContext jmsContext) {
+    public void setJmsContext(final JMSContext jmsContext) {
         this.jmsContext = jmsContext;
     }
 
@@ -46,7 +46,7 @@ public class JmsSender {
      * @param queue объект класса queue
      */
     @Resource(name = QUEUE_NAME)
-    public void setQueue(Queue queue) {
+    public void setQueue(final Queue queue) {
         this.queue = queue;
     }
 
@@ -76,7 +76,7 @@ public class JmsSender {
      */
     public String createJmsMessage(final String text) {
 
-        if (!"".equals(text)) {
+        if (text != null && text.length() > 0) {
             jmsContext.createProducer().send(queue, text);
             return SUCCESS_MESSAGE;
         } else {
