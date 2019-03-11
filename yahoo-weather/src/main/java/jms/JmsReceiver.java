@@ -34,20 +34,40 @@ public class JmsReceiver implements MessageListener {
 
     private YahooWeatherService yahooWeatherService;
 
+    /**
+     * Сеттер контекста MDB
+     *
+     * @param messageDrivenContext контекст MDB
+     */
     @Resource
     public void setMessageDrivenContext(final MessageDrivenContext messageDrivenContext) {
         this.messageDrivenContext = messageDrivenContext;
     }
 
+    /**
+     * Сеттер погодного сервиса
+     *
+     * @param yahooWeatherService погодный сервис
+     */
     @Inject
     public void setYahooWeatherService(final YahooWeatherService yahooWeatherService) {
         this.yahooWeatherService = yahooWeatherService;
     }
 
+    /**
+     * Геттер контекста MDB
+     *
+     * @return контекст MDB
+     */
     public MessageDrivenContext getMessageDrivenContext() {
         return messageDrivenContext;
     }
 
+    /**
+     * Геттер погодного сервиса
+     *
+     * @return погодный сервис
+     */
     public YahooWeatherService getYahooWeatherService() {
         return yahooWeatherService;
     }
@@ -55,7 +75,7 @@ public class JmsReceiver implements MessageListener {
     /**
      * Обработчик входящих сообщений
      *
-     * @param message   входящее сообщение
+     * @param message входящее сообщение
      */
     @Override
     public void onMessage(final Message message) {

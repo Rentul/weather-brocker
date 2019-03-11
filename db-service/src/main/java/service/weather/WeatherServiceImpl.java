@@ -28,6 +28,12 @@ public class WeatherServiceImpl implements WeatherService {
 
     private final MapperFacade mapperFacade;
 
+    /**
+     * Конструктор
+     *
+     * @param dao dao
+     * @param mapperFacade фасад маппера
+     */
     @Autowired
     public WeatherServiceImpl(final WeatherDao dao, final MapperFacade mapperFacade) {
         this.dao = dao;

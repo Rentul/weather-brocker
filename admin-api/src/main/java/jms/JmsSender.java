@@ -28,6 +28,11 @@ public class JmsSender {
 
     private Queue queue;
 
+    /**
+     * Сеттер JMS контекста
+     *
+     * @param jmsContext JMS контекст
+     */
     @Inject
     @JMSConnectionFactory(JMS_CONNECTION_FACTORY)
     @JMSPasswordCredential(userName = JMS_USER_NAME, password = JMS_PASSWORD)
@@ -35,15 +40,30 @@ public class JmsSender {
         this.jmsContext = jmsContext;
     }
 
+    /**
+     * Сеттер очереди
+     *
+     * @param queue объект класса queue
+     */
     @Resource(name = QUEUE_NAME)
     public void setQueue(Queue queue) {
         this.queue = queue;
     }
 
+    /**
+     * Геттер очереди
+     *
+     * @return объект класса queue
+     */
     public Queue getQueue() {
         return queue;
     }
 
+    /**
+     * Геттер JMS контекста
+     *
+     * @return объект класса JmsContext
+     */
     public JMSContext getJmsContext() {
         return jmsContext;
     }

@@ -19,6 +19,13 @@ public class YahooWeatherServiceImpl implements YahooWeatherService {
 
     private final JacksonMapper jacksonMapper;
 
+    /**
+     * Конструктор
+     *
+     * @param jmsSender отправщик JMS сообщений
+     * @param yahooRequester объект, создающий запросы в Yahoo
+     * @param jacksonMapper маппер
+     */
     @Inject
     public YahooWeatherServiceImpl(
             final JmsSender jmsSender,

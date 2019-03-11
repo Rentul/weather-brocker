@@ -63,7 +63,12 @@ public class YahooRequester {
 
     private static final String VERSION_OF_OAUTH_PROTOCOL = "1.0";
 
-
+    /**
+     * Формирование и отправка запроса в Yahoo
+     *
+     * @param cityName название города
+     * @return результат запроса
+     */
     public String makeRequestToYahoo(final String cityName) {
 
         long timestamp = new Date().getTime() / 1000;

@@ -13,6 +13,11 @@ public class AdminApiServiceImpl implements AdminApiService {
 
     private final JmsSender jmsSender;
 
+    /**
+     * Конструктор
+     *
+     * @param jmsSender экземпляр класса JmsSender
+     */
     @Inject
     public AdminApiServiceImpl(final JmsSender jmsSender) {
         this.jmsSender = jmsSender;

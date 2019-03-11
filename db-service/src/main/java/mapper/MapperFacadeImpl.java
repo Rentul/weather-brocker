@@ -14,6 +14,11 @@ public class MapperFacadeImpl implements MapperFacade {
 
     private final MapperFactory mapperFactory;
 
+    /**
+     * Конструктор
+     *
+     * @param mapperFactory фабрика фасадов
+     */
     @Autowired
     public MapperFacadeImpl(MapperFactory mapperFactory) {
         this.mapperFactory = mapperFactory;

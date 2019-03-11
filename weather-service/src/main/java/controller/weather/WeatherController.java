@@ -19,6 +19,11 @@ public class WeatherController {
 
     private final WeatherService weatherService;
 
+    /**
+     * Конструктор
+     *
+     * @param weatherService погодный сервис
+     */
     @Autowired
     public WeatherController(final WeatherService weatherService) {
         this.weatherService = weatherService;

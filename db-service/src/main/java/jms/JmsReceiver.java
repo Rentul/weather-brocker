@@ -16,6 +16,11 @@ public class JmsReceiver implements MessageListener {
 
     final private WeatherService weatherService;
 
+    /**
+     * Конструктор
+     *
+     * @param weatherService погодный сервис
+     */
     @Autowired
     public JmsReceiver(final WeatherService weatherService) {
         this.weatherService = weatherService;

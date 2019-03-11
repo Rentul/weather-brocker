@@ -28,6 +28,11 @@ public class JmsSender {
 
     private Queue queue;
 
+    /**
+     * Сеттер JMS контекста
+     *
+     * @param jmsContext JMS контекст
+     */
     @Inject
     @JMSConnectionFactory(JMS_CONNECTION_FACTORY)
     @JMSPasswordCredential(userName = JMS_USER_NAME, password = JMS_PASSWORD)
@@ -35,15 +40,38 @@ public class JmsSender {
         this.jmsContext = jmsContext;
     }
 
+    /**
+     * Сеттер очереди
+     *
+     * @param queue очередь
+     */
     @Resource(name = QUEUE_NAME)
     public void setQueue(final Queue queue) {
         this.queue = queue;
     }
 
     /**
+     * Геттер JMS контекста
+     *
+     * @return JMS контекст
+     */
+    public JMSContext getJmsContext() {
+        return jmsContext;
+    }
+
+    /**
+     * Геттер очереди
+     *
+     * @return очередь
+     */
+    public Queue getQueue() {
+        return queue;
+    }
+
+    /**
      * Отправка прогноза погоды через JMS
      *
-     * @param weatherBroadcast  прогноз погоды
+     * @param weatherBroadcast прогноз погоды
      */
     public void createJmsMessage(final WeatherBroadcast weatherBroadcast) {
 

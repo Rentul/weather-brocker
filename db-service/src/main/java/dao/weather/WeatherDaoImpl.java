@@ -27,8 +27,26 @@ public class WeatherDaoImpl implements WeatherDao {
 
     private final String PERSISTENCE_UNIT_NAME = "sample";
 
-    @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private EntityManager entityManager;
+
+    /**
+     * Геттер энтити-менеджера
+     *
+     * @return экземляр класса EntityManager
+     */
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    /**
+     * Сеттер энтити-менеджера
+     *
+     * @param entityManager экземпляр класса EntityManager
+     */
+    @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     /**
      * {@inheritDoc}
