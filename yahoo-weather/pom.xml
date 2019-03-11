@@ -13,51 +13,35 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
-        <encoding>UTF-8</encoding>
-        <wildfly.version>2.0.0.Final</wildfly.version>
-        <wildfly.hostname>localhost</wildfly.hostname>
-        <wildfly.port>9990</wildfly.port>
-        <wildfly.username>admin</wildfly.username>
-        <wildfly.password>password</wildfly.password>
         <wildfly.name>yahoo-weather.jar</wildfly.name>
     </properties>
 
     <dependencies>
-
         <!-- https://mvnrepository.com/artifact/org.wildfly.plugins/wildfly-maven-plugin -->
         <dependency>
             <groupId>org.wildfly.plugins</groupId>
             <artifactId>wildfly-maven-plugin</artifactId>
-            <version>2.0.0.Final</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>8.0.1-b5</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.0.1.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
         </dependency>
-
     </dependencies>
 
     <build>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -66,7 +50,6 @@
         </resources>
 
         <plugins>
-
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
@@ -79,6 +62,7 @@
                     <name>${wildfly.name}</name>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -111,9 +95,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-
     </build>
-
 </project>
