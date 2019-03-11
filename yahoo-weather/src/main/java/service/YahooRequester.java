@@ -37,27 +37,31 @@ public class YahooRequester {
 
     private static final String HMAC_SHA1 = "HMAC-SHA1";
 
-    private static final String FORMAT_JSON = "format=json";
+    private static final String FORMAT = "format";
 
-    private static final String OAUTH_CONSUMER_KEY =  "oauth_consumer_key=";
+    private static final String JSON = "json";
 
-    private static final String OAUTH_NONCE =  "oauth_nonce=";
+    private static final String OAUTH_CONSUMER_KEY = "oauth_consumer_key";
 
-    private static final String OAUTH_SIGNATURE_METHOD =  "oauth_signature_method=";
+    private static final String OAUTH_NONCE = "oauth_nonce";
 
-    private static final String OAUTH_TIMESTAMP =  "oauth_timestamp=";
+    private static final String OAUTH_SIGNATURE_METHOD = "oauth_signature_method";
 
-    private static final String OAUTH_SIGNATURE =  "oauth_signature=";
+    private static final String OAUTH_TIMESTAMP = "oauth_timestamp";
 
-    private static final String OAUTH_VERSION =  "oauth_version=";
+    private static final String OAUTH_SIGNATURE = "oauth_signature";
 
-    private static final String LOCATION =  "location=";
+    private static final String OAUTH_VERSION = "oauth_version";
 
-    private static final String AUTHORIZATION_HEADER =  "Authorization";
+    private static final String LOCATION = "location";
 
-    private static final String YAHOO_APP_ID_HEADER =  "Yahoo-App-Id";
+    private static final String AUTHORIZATION_HEADER = "Authorization";
 
-    private static final String UTF8_ENCODING =  "UTF-8";
+    private static final String YAHOO_APP_ID_HEADER = "Yahoo-App-Id";
+
+    private static final String UTF8_ENCODING = "UTF-8";
+
+    private static final String VERSION_OF_OAUTH_PROTOCOL = "1.0";
 
 
     public String makeRequestToYahoo(final String cityName) {
@@ -69,7 +73,7 @@ public class YahooRequester {
         final String authorizationLine = buildAuthorizationLine(oauthNonce, timestamp, signature);
         final HttpHeaders headers = makeHeaders(authorizationLine);
         final HttpEntity entity = new HttpEntity(headers);
-        final URI uri = URI.create(URL + "?" + LOCATION + cityName + "&" + FORMAT_JSON);
+        final URI uri = URI.create(URL + "?" + LOCATION + "=" + cityName + "&" + FORMAT + "=" + JSON);
         final RestTemplate restTemplate = new RestTemplate();
         final ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
         return result.getBody();
@@ -88,13 +92,13 @@ public class YahooRequester {
 
         final List<String> parameters = new ArrayList<>();
 
-        parameters.add(OAUTH_CONSUMER_KEY + CONSUMER_KEY);
-        parameters.add(OAUTH_NONCE + oauthNonce);
-        parameters.add(OAUTH_SIGNATURE_METHOD + HMAC_SHA1);
-        parameters.add(OAUTH_TIMESTAMP + timestamp);
-        parameters.add(OAUTH_VERSION + "1.0");
-        parameters.add(LOCATION + encodedCityName);
-        parameters.add(FORMAT_JSON);
+        parameters.add(OAUTH_CONSUMER_KEY + "=" + CONSUMER_KEY);
+        parameters.add(OAUTH_NONCE + "=" + oauthNonce);
+        parameters.add(OAUTH_SIGNATURE_METHOD + "=" + HMAC_SHA1);
+        parameters.add(OAUTH_TIMESTAMP + "=" + timestamp);
+        parameters.add(OAUTH_VERSION + "=" + VERSION_OF_OAUTH_PROTOCOL);
+        parameters.add(LOCATION + "=" + encodedCityName);
+        parameters.add(FORMAT + "=" + JSON);
 
         Collections.sort(parameters);
 
@@ -155,12 +159,12 @@ public class YahooRequester {
         final StringBuilder authorizationLineBuilder = new StringBuilder();
 
         authorizationLineBuilder.append("OAuth ")
-                .append(OAUTH_CONSUMER_KEY).append("\"").append(CONSUMER_KEY).append("\", ")
-                .append(OAUTH_NONCE).append("\"").append(oauthNonce).append("\", ")
-                .append(OAUTH_TIMESTAMP).append("\"").append(timestamp).append("\", ")
-                .append(OAUTH_SIGNATURE_METHOD).append("\"").append(HMAC_SHA1).append("\", ")
-                .append(OAUTH_SIGNATURE).append("\"").append(signature).append("\", ")
-                .append(OAUTH_VERSION).append("\"1.0\"");
+                .append(OAUTH_CONSUMER_KEY).append("=").append("\"").append(CONSUMER_KEY).append("\", ")
+                .append(OAUTH_NONCE).append("=").append("\"").append(oauthNonce).append("\", ")
+                .append(OAUTH_TIMESTAMP).append("=").append("\"").append(timestamp).append("\", ")
+                .append(OAUTH_SIGNATURE_METHOD).append("=").append("\"").append(HMAC_SHA1).append("\", ")
+                .append(OAUTH_SIGNATURE).append("=").append("\"").append(signature).append("\", ")
+                .append(OAUTH_VERSION).append("=").append("\"").append(VERSION_OF_OAUTH_PROTOCOL).append("\"");
 
         return authorizationLineBuilder.toString();
     }

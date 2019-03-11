@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.io.Serializable;
 
+/**
+ * Местонахождение
+ */
 @JsonPropertyOrder({
         "woeid",
         "city",
@@ -17,18 +20,39 @@ import java.io.Serializable;
 })
 public class Location implements Serializable {
 
+    /**
+     * Id
+     */
     private Long woeid;
 
+    /**
+     * Город
+     */
     private String city;
 
+    /**
+     * Регион
+     */
     private String region;
 
+    /**
+     * Страна
+     */
     private String country;
 
+    /**
+     * Широта
+     */
     private Double lat;
 
+    /**
+     * Долгота
+     */
     private Double longitude;
 
+    /**
+     * Id временной зоны
+     */
     private String timezoneId;
 
     @JsonGetter("woeid")

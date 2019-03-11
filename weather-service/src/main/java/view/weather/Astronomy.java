@@ -6,14 +6,23 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.io.Serializable;
 
+/**
+ * Астрономия
+ */
 @JsonPropertyOrder({
         "sunrise",
         "sunset"
 })
 public class Astronomy implements Serializable {
 
+    /**
+     * Рассвет
+     */
     private String sunrise;
 
+    /**
+     * Закат
+     */
     private String sunset;
 
     @JsonGetter("sunrise")

@@ -10,23 +10,41 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 
+/**
+ * Астрономия
+ */
 @Entity
 @Table(name = "Astronomy")
 public class Astronomy {
 
+    /**
+     * Id
+     */
     @Id
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Рассвет
+     */
     @Column(name = "sunrise", length = 15, nullable = false)
     private String sunrise;
 
+    /**
+     * Закат
+     */
     @Column(name = "sunset", length = 15, nullable = false)
     private String sunset;
 
+    /**
+     * Наблюдения
+     */
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId

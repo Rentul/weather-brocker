@@ -1,40 +1,13 @@
 package service;
 
-import jms.JmsSender;
-import mapper.JacksonMapper;
-import view.weather.WeatherBroadcast;
-
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
-@Stateless
-public class YahooWeatherService implements Service {
-
-    private final JmsSender jmsSender;
-
-    private final YahooRequester yahooRequester;
-
-    private final JacksonMapper jacksonMapper;
-
-    @Inject
-    public YahooWeatherService(
-            final JmsSender jmsSender,
-            final YahooRequester yahooRequester,
-            final JacksonMapper jacksonMapper) {
-
-        this.jmsSender = jmsSender;
-        this.yahooRequester = yahooRequester;
-        this.jacksonMapper = jacksonMapper;
-    }
-
-    public void serve (final String cityName) {
-
-        final String yahooResponse = yahooRequester.makeRequestToYahoo(cityName);
-
-        final WeatherBroadcast weatherBroadcast = jacksonMapper.mapJsonToWeatherBroadcast(yahooResponse);
-
-        jmsSender.createJmsMessage(weatherBroadcast);
-
-    }
-
+/**
+ * Сервис приложения
+ */
+public interface YahooWeatherService {
+    /**
+     *  Создание запроса на Yahoo, парсинг ответа и отправка в JMS очередь
+     *
+     * @param text  название города, по которому будет производиться запрос
+     */
+    void serve(String text);
 }

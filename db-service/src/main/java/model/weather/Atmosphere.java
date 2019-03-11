@@ -10,29 +10,53 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 
+/**
+ * Атмосфера
+ */
 @Entity
 @Table(name = "Atmosphere")
 public class Atmosphere {
 
+    /**
+     * Id
+     */
     @Id
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Влажность
+     */
     @Column(name = "humidity")
     private Integer humidity;
 
+    /**
+     * Видимость
+     */
     @Column(name = "visibility")
     private Float visibility;
 
+    /**
+     * Давление
+     */
     @Column(name = "pressure")
     private Float pressure;
 
+    /**
+     * Rising
+     */
     @Column(name = "rising")
     private Integer rising;
 
+    /**
+     * Наблюдения
+     */
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId

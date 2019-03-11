@@ -11,35 +11,65 @@ import javax.persistence.CascadeType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Местонахождение
+ */
 @Entity
 @Table(name = "Location")
 public class Location {
 
+    /**
+     * Id
+     */
     @Id
     @Column(name = "woeid")
     private Long woeid;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Город
+     */
     @Column(name = "city", length = 50, nullable = false)
     private String city;
 
+    /**
+     * Регион
+     */
     @Column(name = "region", length = 100, nullable = false)
     private String region;
 
+    /**
+     * Страна
+     */
     @Column(name = "country", length = 100, nullable = false)
     private String country;
 
+    /**
+     * Широта
+     */
     @Column(name = "lat")
     private Double latitude;
 
+    /**
+     * Долгота
+     */
     @Column(name = "long")
     private Double longitude;
 
+    /**
+     * Id временной зоны
+     */
     @Column(name = "timezone_id", length = 50, nullable = false)
     private String timezoneId;
 
+    /**
+     * Прогнозы погоды
+     */
     @OneToMany(
             mappedBy = "location",
             cascade = CascadeType.ALL,

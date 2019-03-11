@@ -12,36 +12,66 @@ import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 
+/**
+ * Прогноз на день
+ */
 @Entity
 @Table(name = "Forecast")
 public class Forecast {
 
+    /**
+     * Id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * День недели
+     */
     @Column(name = "day", length = 8, nullable = false)
     private String day;
 
+    /**
+     * Дата
+     */
     @Column(name = "date")
     private Timestamp date;
 
+    /**
+     * Нижний порог температуры
+     */
     @Column(name = "low")
     private Integer low;
 
+    /**
+     * Верхний порог температуры
+     */
     @Column(name = "high")
     private Integer high;
 
+    /**
+     * Описание погоды
+     */
     @Column(name = "text", length = 50, nullable = false)
     private String text;
 
+    /**
+     * Код погоды
+     */
     @Column(name = "code")
     private Integer code;
 
+    /**
+     * Прогноз погоды
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "broadcast_id")
     private WeatherBroadcast weatherBroadcast;

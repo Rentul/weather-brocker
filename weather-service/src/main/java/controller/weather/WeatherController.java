@@ -10,6 +10,9 @@ import view.weather.WeatherBroadcast;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+/**
+ * Контроллер
+ */
 @RestController
 @RequestMapping(value = "/", produces = APPLICATION_JSON_VALUE)
 public class WeatherController {
@@ -21,6 +24,12 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
+    /**
+     * Полуение прогноза погоды по названию города
+     *
+     * @param city название города
+     * @return прогноз погоды
+     */
     @RequestMapping(value = "/{city:[\\w]+}", method = {GET})
     public WeatherBroadcast getWeatherBroadcastByCity(final @PathVariable("city") String city) {
         return weatherService.getWeatherBroadcast(city);

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="javax.servlet.http.HttpServletRequest" %>
 <%@ page import="javax.naming.*" %>
-<%@ page import="service.Service" %>
+<%@ page import="service.AdminApiService" %>
 <html>
     <head>
         <title>Admin-api</title>
@@ -15,7 +15,7 @@
             String result;
             try {
                 InitialContext initialContext = new InitialContext();
-                Service service = (Service) initialContext.lookup("java:global/admin-api/AdminApiService");
+                AdminApiService service = (AdminApiService) initialContext.lookup("java:global/admin-api/AdminApiServiceImpl");
                 city = request.getParameter("city");
 
                 if (!"".equals(city)) {

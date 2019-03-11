@@ -10,26 +10,47 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 
+/**
+ * Состояние
+ */
 @Entity
 @Table(name = "Condition")
 public class Condition {
 
+    /**
+     * Id
+     */
     @Id
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Описание погоды
+     */
     @Column(name = "text", length = 50, nullable = false)
     private String text;
 
+    /**
+     * Код погоды
+     */
     @Column(name = "code")
     private Integer code;
 
+    /**
+     * Температура
+     */
     @Column(name = "temperature")
     private Integer temperature;
 
+    /**
+     * Наблюдения
+     */
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId

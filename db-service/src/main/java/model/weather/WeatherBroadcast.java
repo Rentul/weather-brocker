@@ -16,22 +16,37 @@ import javax.persistence.CascadeType;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Прогноз погоды
+ */
 @Entity
 @Table(name = "Weather_Broadcast")
 public class WeatherBroadcast {
 
+    /**
+     * Id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Местонахождение
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id")
     private Location location;
 
+    /**
+     * Прогнозы
+     */
     @OneToMany(
             mappedBy = "weatherBroadcast",
             cascade = CascadeType.ALL,

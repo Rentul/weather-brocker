@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.io.Serializable;
 
+/**
+ * Ветер
+ */
 @JsonPropertyOrder({
         "chill",
         "direction",
@@ -13,10 +16,19 @@ import java.io.Serializable;
 })
 public class Wind implements Serializable {
 
+    /**
+     * Chill
+     */
     private Integer chill;
 
+    /**
+     * Направление
+     */
     private Integer direction;
 
+    /**
+     * Скорость
+     */
     private Float speed;
 
     @JsonGetter("chill")

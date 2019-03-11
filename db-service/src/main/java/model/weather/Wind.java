@@ -10,27 +10,47 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.MapsId;
 
-
+/**
+ * Ветер
+ */
 @Entity
 @Table(name = "Wind")
 public class Wind {
 
+    /**
+     * Id
+     */
     @Id
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Chill
+     */
     @Column(name = "chill")
     private Integer chill;
 
+    /**
+     * Направление
+     */
     @Column(name = "direction")
     private Integer direction;
 
+    /**
+     * Скорость
+     */
     @Column(name = "speed")
     private Float speed;
 
+    /**
+     * Наблюдения
+     */
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId

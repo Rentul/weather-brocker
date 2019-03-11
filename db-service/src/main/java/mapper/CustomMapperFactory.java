@@ -12,6 +12,10 @@ import view.weather.Atmosphere;
 import view.weather.Condition;
 import view.weather.Forecast;
 
+/**
+ * Фабрика для создания MapperFactory.
+ * При необходимости можно добавить кастомные мапперы.
+ */
 @Service
 public class CustomMapperFactory implements FactoryBean<MapperFactory> {
 
@@ -43,6 +47,11 @@ public class CustomMapperFactory implements FactoryBean<MapperFactory> {
 
     private static String WEATHER_BROADCASTS = "weatherBroadcasts";
 
+    /**
+     * Получение сконфигурированного объекта класса MapperFactory
+     *
+     * @return объект класса MapperFactory
+     */
     @Override
     public MapperFactory getObject() {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder()
@@ -113,11 +122,21 @@ public class CustomMapperFactory implements FactoryBean<MapperFactory> {
         return mapperFactory;
     }
 
+    /**
+     * Получение класса конфигурируемого объекта
+     *
+     * @return класс конфигурируемого объекта
+     */
     @Override
     public Class<?> getObjectType() {
         return MapperFactory.class;
     }
 
+    /**
+     * Узнать, является-ли объект синглтоном
+     *
+     * @return true/false
+     */
     @Override
     public boolean isSingleton() {
         return true;

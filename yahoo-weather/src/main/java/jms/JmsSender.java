@@ -10,6 +10,9 @@ import javax.jms.JMSContext;
 import javax.jms.JMSPasswordCredential;
 import javax.jms.Queue;
 
+/**
+ * Publisher JMS сообщений
+ */
 @Stateless
 public class JmsSender {
 
@@ -37,6 +40,11 @@ public class JmsSender {
         this.queue = queue;
     }
 
+    /**
+     * Отправка прогноза погоды через JMS
+     *
+     * @param weatherBroadcast  прогноз погоды
+     */
     public void createJmsMessage(final WeatherBroadcast weatherBroadcast) {
 
         if (weatherBroadcast != null) {

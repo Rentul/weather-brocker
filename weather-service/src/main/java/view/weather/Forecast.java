@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.io.Serializable;
 
+/**
+ * Прогноз погоды на день
+ */
 @JsonPropertyOrder({
         "day",
         "date",
@@ -16,16 +19,34 @@ import java.io.Serializable;
 })
 public class Forecast implements Serializable {
 
+    /**
+     * День недели
+     */
     private String day;
 
+    /**
+     * Дата
+     */
     private Long date;
 
+    /**
+     * Нижний порог температуры
+     */
     private Integer low;
 
+    /**
+     * Верхний порог температуры
+     */
     private Integer high;
 
+    /**
+     * Описание погоды
+     */
     private String text;
 
+    /**
+     * Код погоды
+     */
     private Integer code;
 
     @JsonGetter("day")

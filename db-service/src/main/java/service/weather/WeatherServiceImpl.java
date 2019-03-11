@@ -18,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 @Service
 public class WeatherServiceImpl implements WeatherService {
 
@@ -31,6 +34,9 @@ public class WeatherServiceImpl implements WeatherService {
         this.mapperFacade = mapperFacade;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public void addWeatherBroadcast(final view.weather.WeatherBroadcast weatherBroadcastView) {
@@ -104,6 +110,9 @@ public class WeatherServiceImpl implements WeatherService {
         dao.addWind(wind);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public view.weather.WeatherBroadcast getWeatherBroadcast(final String city) {

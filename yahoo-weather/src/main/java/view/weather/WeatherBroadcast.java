@@ -8,6 +8,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Прогноз погоды
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "location",
@@ -16,10 +19,19 @@ import java.util.List;
 })
 public class WeatherBroadcast implements Serializable {
 
+    /**
+     * Местонахождение
+     */
     private Location location;
 
+    /**
+     * Наблюдения
+     */
     private CurrentObservation currentObservation;
 
+    /**
+     * Прогнозы
+     */
     private List<Forecast> forecasts;
 
     @JsonGetter("location")
@@ -53,8 +65,7 @@ public class WeatherBroadcast implements Serializable {
     }
 
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "WeatherBroadcast{" +
                 "location=" + location +
                 ", currentObservation=" + currentObservation +

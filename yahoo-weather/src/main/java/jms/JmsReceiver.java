@@ -1,6 +1,6 @@
 package jms;
 
-import service.Service;
+import service.YahooWeatherService;
 
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
@@ -12,6 +12,9 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+/**
+ * Получатель JMS сообщений
+ */
 @MessageDriven(
         mappedName="java:jboss/exported/jms/queue/test",
         activationConfig = {
@@ -29,7 +32,7 @@ public class JmsReceiver implements MessageListener {
 
     private MessageDrivenContext messageDrivenContext;
 
-    private Service service;
+    private YahooWeatherService yahooWeatherService;
 
     @Resource
     public void setMessageDrivenContext(final MessageDrivenContext messageDrivenContext) {
@@ -37,17 +40,30 @@ public class JmsReceiver implements MessageListener {
     }
 
     @Inject
-    public void setService(final Service service) {
-        this.service = service;
+    public void setYahooWeatherService(final YahooWeatherService yahooWeatherService) {
+        this.yahooWeatherService = yahooWeatherService;
     }
 
+    public MessageDrivenContext getMessageDrivenContext() {
+        return messageDrivenContext;
+    }
+
+    public YahooWeatherService getYahooWeatherService() {
+        return yahooWeatherService;
+    }
+
+    /**
+     * Обработчик входящих сообщений
+     *
+     * @param message   входящее сообщение
+     */
     @Override
     public void onMessage(final Message message) {
         final String text;
         try {
             if (message instanceof TextMessage) {
                 text = ((TextMessage) message).getText();
-                service.serve(text);
+                yahooWeatherService.serve(text);
             }
         } catch (JMSException e) {
             throw new RuntimeException("Error in JmsReceiver while receiving Jms Message", e);

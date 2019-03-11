@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.io.Serializable;
 
+/**
+ * Состояние
+ */
 @JsonPropertyOrder({
         "text",
         "code",
@@ -13,10 +16,19 @@ import java.io.Serializable;
 })
 public class Condition implements Serializable {
 
+    /**
+     * Описание погоды
+     */
     private String text;
 
+    /**
+     * Код погоды
+     */
     private Integer code;
 
+    /**
+     * Температура
+     */
     private Integer temperature;
 
     @JsonGetter("text")

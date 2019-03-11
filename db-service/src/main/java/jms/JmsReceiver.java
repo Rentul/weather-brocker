@@ -9,6 +9,9 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 
+/**
+ * Получатель JMS сообщений
+ */
 public class JmsReceiver implements MessageListener {
 
     final private WeatherService weatherService;
@@ -18,6 +21,11 @@ public class JmsReceiver implements MessageListener {
         this.weatherService = weatherService;
     }
 
+    /**
+     * Обработчик входящих сообщений
+     *
+     * @param message входящее сообщение
+     */
     @Override
     public void onMessage(final Message message) {
 

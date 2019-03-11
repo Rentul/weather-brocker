@@ -1,22 +1,15 @@
 package service;
 
-import jms.JmsSender;
+/**
+ * Сервис приложения для отправки сообщений по JMS
+ */
+public interface AdminApiService {
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
-@Stateless
-public class AdminApiService implements Service {
-
-    private final JmsSender jmsSender;
-
-    @Inject
-    public AdminApiService(final JmsSender jmsSender) {
-        this.jmsSender = jmsSender;
-    }
-
-    public String serve(final String text) {
-        return jmsSender.createJmsMessage(text);
-    }
-
+    /**
+     * Конвертация входной строки в сообщение и отправка
+     *
+     * @param text входная строка
+     * @return результат работы метода
+     */
+    String serve(String text);
 }

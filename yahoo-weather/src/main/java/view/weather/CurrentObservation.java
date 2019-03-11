@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.io.Serializable;
 
+/**
+ * Наблюдения
+ */
 @JsonPropertyOrder({
         "wind",
         "atmosphere",
@@ -15,14 +18,29 @@ import java.io.Serializable;
 })
 public class CurrentObservation implements Serializable {
 
+    /**
+     * Ветер
+     */
     private Wind wind;
 
+    /**
+     * Атмосфера
+     */
     private Atmosphere atmosphere;
 
+    /**
+     * Астрономия
+     */
     private Astronomy astronomy;
 
+    /**
+     * Состояние
+     */
     private Condition condition;
 
+    /**
+     * Время публикации прогноза
+     */
     private Long pubDate;
 
     @JsonGetter("wind")

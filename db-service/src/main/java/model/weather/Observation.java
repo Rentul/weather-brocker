@@ -12,20 +12,35 @@ import javax.persistence.MapsId;
 
 import java.sql.Timestamp;
 
+/**
+ * Наблюдения
+ */
 @Entity
 @Table(name = "Observation")
 public class Observation {
 
+    /**
+     * Id
+     */
     @Id
     @Column(name = "id")
     private Long id;
 
+    /**
+     * Служебное поле hibernate
+     */
     @Version
     private Integer version;
 
+    /**
+     * Время публикации прогноза
+     */
     @Column(name = "pub_date")
     private Timestamp pubDate;
 
+    /**
+     * Прогноз погоды
+     */
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
