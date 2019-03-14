@@ -19,7 +19,7 @@
 
     <jee:jndi-lookup id="connectionFactory" jndi-name="java:/ConnectionFactory"/>
 
-    <jee:jndi-lookup id="destination" jndi-name="java:/queue/test2"/>
+    <jee:jndi-lookup id="destination" jndi-name="java:/queue/yahooDb"/>
 
     <tx:annotation-driven/>
 

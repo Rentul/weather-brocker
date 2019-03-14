@@ -22,7 +22,7 @@ public class JmsSender {
 
     private static final String JMS_PASSWORD = "yahoo-weather";
 
-    private static final String QUEUE_NAME = "java:jboss/exported/jms/queue/test2";
+    private static final String QUEUE_NAME = "java:/queue/yahooDb";
 
     private JMSContext jmsContext;
 

@@ -18,7 +18,7 @@ public class JmsSender {
 
     private static final String JMS_PASSWORD = "admin-api";
 
-    private static final String QUEUE_NAME = "java:jboss/exported/jms/queue/test";
+    private static final String QUEUE_NAME = "java:/queue/adminYahoo";
 
     private static final String SUCCESS_MESSAGE = "success";
 
