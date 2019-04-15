@@ -16,7 +16,7 @@ import javax.jms.TextMessage;
  * Получатель JMS сообщений
  */
 @MessageDriven(
-        mappedName="java:jboss/exported/jms/queue/test",
+        mappedName="java:/queue/adminYahoo",
         activationConfig = {
             @ActivationConfigProperty(
                     propertyName = "acknowledgeMode",
@@ -26,7 +26,7 @@ import javax.jms.TextMessage;
                     propertyValue = "javax.jms.Queue"),
             @ActivationConfigProperty(
                     propertyName = "destination",
-                    propertyValue = "java:jboss/exported/jms/queue/test")
+                    propertyValue = "java:/queue/adminYahoo")
 })
 public class JmsReceiver implements MessageListener {
 
