@@ -24,6 +24,8 @@
         <wildfly.username>admin</wildfly.username>
         <wildfly.password>password</wildfly.password>
         <spring.version>4.3.0.RELEASE</spring.version>
+        <swagger.version>2.9.2</swagger.version>
+        <hessian.version>4.0.38</hessian.version>
     </properties>
 
     <dependencyManagement>
@@ -103,7 +105,7 @@
             <dependency>
                 <groupId>com.caucho</groupId>
                 <artifactId>hessian</artifactId>
-                <version>4.0.38</version>
+                <version>${hessian.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
