@@ -22,6 +22,9 @@ import java.util.Random;
 import java.util.Collections;
 import java.util.Base64;
 
+/**
+ * Формировщик и отправщик запросов к Yahoo
+ */
 @Stateless
 public class YahooRequester {
 
