@@ -16,7 +16,7 @@ import javax.jms.Queue;
 @Stateless
 public class JmsSender {
 
-    private static final String JMS_CONNECTION_FACTORY = "java:jboss/exported/jms/RemoteConnectionFactory";
+    private static final String JMS_CONNECTION_FACTORY = "java:/JmsXA";
 
     private static final String JMS_USER_NAME = "yahoo-weather";
 

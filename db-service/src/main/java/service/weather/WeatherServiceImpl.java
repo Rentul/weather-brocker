@@ -30,8 +30,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     /**
      * Конструктор
-     *
-     * @param dao dao
+     *  @param dao dao
      * @param mapperFacade фасад маппера
      */
     @Autowired
