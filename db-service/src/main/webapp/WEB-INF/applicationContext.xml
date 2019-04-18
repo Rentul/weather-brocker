@@ -21,11 +21,8 @@
 
     <jee:jndi-lookup id="destination" jndi-name="java:/queue/yahooDb"/>
 
-    <jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/PostgreDataSource" />
-
     <tx:annotation-driven/>
-
-    <!-- this is the Message Driven POJO (MDP) -->
+    
     <bean id="messageListener" class="jms.JmsReceiver"/>
 
     <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
@@ -46,7 +43,6 @@
     </bean>
 
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="jtaDataSource" ref="dataSource" />
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
     </bean>
 
