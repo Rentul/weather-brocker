@@ -22,7 +22,7 @@
     <jee:jndi-lookup id="destination" jndi-name="java:/queue/yahooDb"/>
 
     <tx:annotation-driven/>
-    
+
     <bean id="messageListener" class="jms.JmsReceiver"/>
 
     <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
